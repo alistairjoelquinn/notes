@@ -3,11 +3,13 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
     const [item, setItem] = useState('');
+    const [toDoList, setToDoList] = useState([]);
     const itemHandler = inputValue => {
         setItem(inputValue);
     };
     const newItem = () => {
         console.log('item: ', item);
+        setToDoList(toDoList => [ ...toDoList, item ]);
     };
 
     return (
