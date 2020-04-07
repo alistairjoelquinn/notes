@@ -3,22 +3,11 @@ import { StyleSheet, View, Button, TextInput } from 'react-native';
 
 export default function App() {
   return (
-    <View style={{
-        padding: 50
-    }}>
-        <View style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            alignItems: 'center'
-        }}>
+    <View style={styles.screen}>
+        <View style={styles.inputContainer}>
             <TextInput 
                 placeholder='Add to list...'
-                style={{
-                    width: '80%',
-                    borderColor: 'black',
-                    borderWidth: 1,
-                    padding: 10
-                }}
+                style={styles.inputText}
             />
             <Button title='ADD' />
         </View>
@@ -30,5 +19,18 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-
+    screen: {
+        padding: 50
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+    },
+    inputText: {
+        width: '80%',
+        borderColor: 'black',
+        borderWidth: 1,
+        padding: 10
+    }
 });
