@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList } from 'react-native';
 
 export default function App() {
     const [item, setItem] = useState('');
@@ -9,7 +9,7 @@ export default function App() {
     };
     const newItem = () => {
         console.log('item: ', item);
-        setToDoList(toDoList => [ ...toDoList, item ]);
+        setToDoList(toDoList => [ ...toDoList, { key: Math.random().toString(), value: item } ]);
     };
 
     return (
@@ -29,15 +29,15 @@ export default function App() {
                     onPress={newItem}
                 />
             </View>
-            <ScrollView>
-                {toDoList.map(toDo => 
-                    <View key={toDo} style={styles.listItem}>
+            <FlatList 
+                data={toDoList} 
+                renderItem={toDo => 
+                    <View style={styles.listItem}>
                         <Text>
-                            {toDo}
+                            {toDo.item.value}
                         </Text>
-                    </View>
-                )}
-            </ScrollView>
+                    </View>}
+            />
         </View>
     );
 }
