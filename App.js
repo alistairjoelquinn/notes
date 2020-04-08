@@ -7,7 +7,18 @@ export default function App() {
     const [toDoList, setToDoList] = useState([]);
     const newItem = item => {
         console.log('item: ', item);
-        setToDoList(toDoList => [ { key: Math.random().toString(), value: item }, ...toDoList ]);
+        setToDoList(toDoList => [ 
+            { id: Math.random().toString(), value: item }, 
+            ...toDoList 
+        ]);
+    };
+    const removeItem = itemId => {
+        setToDoList(toDoList => {
+            return toDoList.filter(item => {
+                console.log('item.id, itemId: ', item.id, itemId);
+                return item.id !== itemId;
+            });
+        });
     };
 
     return (
@@ -22,8 +33,10 @@ export default function App() {
                 data={toDoList} 
                 renderItem={toDo => 
                     <Item 
+                        onDelete={() => {
+                            removeItem(toDo.item.id);
+                        }}
                         content={toDo.item.value}
-                        onDelete={() => console.log('working!!!')}
                     />
                 }
             />
