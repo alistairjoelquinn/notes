@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import Item from './components/item';
 import InputContainer from './components/input-container';
 
 export default function App() {
     const [toDoList, setToDoList] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
     const newItem = item => {
         console.log('item: ', item);
         setToDoList(toDoList => [ 
@@ -26,8 +27,13 @@ export default function App() {
             <View style={styles.banner}>
                 <Text>Alistair's To-Do List</Text>
             </View>
+            <Button 
+                title="Add Something New..."
+                onPress={() => setModalVisible(true)}
+            />
             <InputContainer 
                 newItem={newItem}
+                visible={modalVisible}
             />
             <FlatList 
                 data={toDoList} 
