@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Item from './components/item';
+import InputContainer from './components/input-container';
 
 export default function App() {
     const [item, setItem] = useState('');
@@ -18,18 +19,11 @@ export default function App() {
             <View style={styles.banner}>
                 <Text>Alistair's To-Do List</Text>
             </View>
-            <View style={styles.inputContainer}>
-                <TextInput 
-                    placeholder='Add to list...'
-                    style={styles.inputText}
-                    onChangeText={itemHandler}
-                    value={item}
-                />
-                <Button 
-                    title='ADD' 
-                    onPress={newItem}
-                />
-            </View>
+            <InputContainer 
+                itemHandler={itemHandler}
+                newItem={newItem}
+                item={item}
+            />
             <FlatList 
                 data={toDoList} 
                 renderItem={toDo => <Item content={toDo.item.value}/>}
@@ -51,16 +45,5 @@ const styles = StyleSheet.create({
         borderBottomWidth: 3,
         marginBottom: 20,
         fontSize: 30
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center'
-    },
-    inputText: {
-        width: '80%',
-        borderColor: 'black',
-        borderWidth: 1,
-        padding: 10
     }
 });
