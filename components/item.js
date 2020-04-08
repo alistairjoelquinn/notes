@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native'; 
 
-const Item = props => {
+export default function Item({ content }) {
     return (
     <View style={styles.listItem}>
         <Text>
-            {props.content}
+            {content}
         </Text>
     </View>
     );
@@ -20,5 +20,3 @@ const styles = StyleSheet.create({
         borderWidth: 1
     }
 });
-
-export default Item; 
