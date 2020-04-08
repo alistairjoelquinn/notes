@@ -4,14 +4,10 @@ import Item from './components/item';
 import InputContainer from './components/input-container';
 
 export default function App() {
-    const [item, setItem] = useState('');
     const [toDoList, setToDoList] = useState([]);
-    const itemHandler = inputValue => {
-        setItem(inputValue);
-    };
-    const newItem = () => {
+    const newItem = item => {
         console.log('item: ', item);
-        setToDoList(toDoList => [ ...toDoList, { key: Math.random().toString(), value: item } ]);
+        setToDoList(toDoList => [ { key: Math.random().toString(), value: item }, ...toDoList ]);
     };
 
     return (
@@ -20,13 +16,16 @@ export default function App() {
                 <Text>Alistair's To-Do List</Text>
             </View>
             <InputContainer 
-                itemHandler={itemHandler}
                 newItem={newItem}
-                item={item}
             />
             <FlatList 
                 data={toDoList} 
-                renderItem={toDo => <Item content={toDo.item.value}/>}
+                renderItem={toDo => 
+                    <Item 
+                        content={toDo.item.value}
+                        onDelete={() => console.log('working!!!')}
+                    />
+                }
             />
         </View>
     );

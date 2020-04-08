@@ -1,13 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'; 
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'; 
 
-export default function Item({ content }) {
+export default function Item({ content, onDelete }) {
     return (
-    <View style={styles.listItem}>
-        <Text>
-            {content}
-        </Text>
-    </View>
+    <TouchableOpacity 
+        onPress={onDelete}
+        activeOpacity={0.8}
+    >
+        <View style={styles.listItem}>
+            <Text>
+                {content}
+            </Text>
+        </View>
+    </TouchableOpacity>
     );
 };
 
@@ -17,6 +22,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         backgroundColor: '#ccc',
         borderColor: 'black',
-        borderWidth: 1
+        borderWidth: 1,
+        borderRadius: 20
     }
 });

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native'; 
 
-export default function InputContainer({ itemHandler, newItem, item }) {
+export default function InputContainer({ newItem }) {
+    const [item, setItem] = useState('');
+    const itemHandler = inputValue => {
+        setItem(inputValue);
+    };
+
     return (
         <View style={styles.inputContainer}>
             <TextInput 
@@ -12,7 +17,7 @@ export default function InputContainer({ itemHandler, newItem, item }) {
             />
             <Button 
                 title='ADD' 
-                onPress={newItem}
+                onPress={() => newItem(item)}
             />
         </View>
     );
