@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, FlatList } from 'react-native';
+import Item from './components/item';
 
 export default function App() {
     const [item, setItem] = useState('');
@@ -31,12 +32,7 @@ export default function App() {
             </View>
             <FlatList 
                 data={toDoList} 
-                renderItem={toDo => 
-                    <View style={styles.listItem}>
-                        <Text>
-                            {toDo.item.value}
-                        </Text>
-                    </View>}
+                renderItem={toDo => <Item content={toDo.item.value}/>}
             />
         </View>
     );
@@ -66,12 +62,5 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 1,
         padding: 10
-    },
-    listItem: {
-        padding: 10,
-        marginTop: 10,
-        backgroundColor: '#ccc',
-        borderColor: 'black',
-        borderWidth: 1
     }
 });
