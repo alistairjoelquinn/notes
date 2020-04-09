@@ -6,6 +6,10 @@ export default function InputContainer({ newItem, visible }) {
     const itemHandler = inputValue => {
         setItem(inputValue);
     };
+    const buttonTouch = () => {
+        newItem(item);
+        setItem('');
+    }
 
     return (
         <Modal 
@@ -20,8 +24,12 @@ export default function InputContainer({ newItem, visible }) {
                     value={item}
                 />
                 <Button 
+                    title="CANCEL"
+                    color="red"
+                />
+                <Button 
                     title='ADD' 
-                    onPress={() => newItem(item)}
+                    onPress={buttonTouch}
                 />
             </View>
         </Modal>

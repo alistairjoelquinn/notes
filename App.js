@@ -22,6 +22,9 @@ export default function App() {
             });
         });
     };
+    const cancelItemInput = () => {
+        setModalVisible(false);
+    }
 
     return (
         <View style={styles.screen}>
