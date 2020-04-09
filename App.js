@@ -4,18 +4,21 @@ import Item from './components/item';
 import InputContainer from './components/input-container';
 
 export default function App() {
-    const [toDoList, setToDoList] = useState([]);
+    const [notesList, setNotesList] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const newItem = item => {
-        setToDoList(toDoList => [ 
+        if(item.length === 0 || item === '') {
+            return;
+        }
+        setNotesList(notesList => [ 
             { id: Math.random().toString(), value: item }, 
-            ...toDoList 
+            ...notesList 
         ]);
         setModalVisible(false);
     };
     const removeItem = itemId => {
-        setToDoList(toDoList => {
-            return toDoList.filter(item => {
+        setNotesList(notesList => {
+            return notesList.filter(item => {
                 return item.id !== itemId;
             });
         });
@@ -42,13 +45,13 @@ export default function App() {
                 cancelItemInput={cancelItemInput}
             />
             <FlatList 
-                data={toDoList} 
-                renderItem={toDo => 
+                data={notesList} 
+                renderItem={note => 
                     <Item 
                         onDelete={() => {
-                            removeItem(toDo.item.id);
+                            removeItem(note.item.id);
                         }}
-                        content={toDo.item.value}
+                        content={note.item.value}
                     />
                 }
             />

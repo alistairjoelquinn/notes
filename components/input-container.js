@@ -18,7 +18,7 @@ export default function InputContainer({ newItem, visible, cancelItemInput }) {
         >
             <View style={styles.inputContainer}>
                 <TextInput 
-                    placeholder='Take some notes...'
+                    placeholder='Talk to me...'
                     placeholderTextColor='#1c1c1c'
                     style={styles.inputText}
                     onChangeText={itemHandler}
