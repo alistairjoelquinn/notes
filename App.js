@@ -7,7 +7,6 @@ export default function App() {
     const [toDoList, setToDoList] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const newItem = item => {
-        console.log('item: ', item);
         setToDoList(toDoList => [ 
             { id: Math.random().toString(), value: item }, 
             ...toDoList 
@@ -17,7 +16,6 @@ export default function App() {
     const removeItem = itemId => {
         setToDoList(toDoList => {
             return toDoList.filter(item => {
-                console.log('item.id, itemId: ', item.id, itemId);
                 return item.id !== itemId;
             });
         });
