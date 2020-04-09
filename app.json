@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nativator",
-    "slug": "nativator",
+    "name": "notes",
+    "slug": "notes",
     "platforms": [
       "ios",
       "android",
