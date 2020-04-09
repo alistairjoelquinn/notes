@@ -29,15 +29,19 @@ export default function App() {
     return (
         <View style={styles.screen}>
             <View style={styles.banner}>
-                <Text>Alistair's To-Do List</Text>
+                <Text style={styles.text}>notes...</Text>
             </View>
-            <Button 
-                title="Add Something New..."
-                onPress={() => setModalVisible(true)}
-            />
+            <View style={styles.button}>
+                <Button 
+                    color='#c192ff'
+                    title="Add Something New..."
+                    onPress={() => setModalVisible(true)}
+                />
+            </View>
             <InputContainer 
                 newItem={newItem}
                 visible={modalVisible}
+                cancelItemInput={cancelItemInput}
             />
             <FlatList 
                 data={toDoList} 
@@ -56,16 +60,24 @@ export default function App() {
 
 const styles = StyleSheet.create({
     screen: {
-        padding: 50
+        padding: 50,
+        backgroundColor: '#1c1c1c',
+        height: '100%'
     },
     banner: {
         flexDirection: 'row',
         justifyContent: 'center',
         paddingBottom: 10,
         paddingTop: 20,
-        borderBottomColor: 'black',
+        borderBottomColor: '#d2d2d2',
         borderBottomWidth: 3,
         marginBottom: 20,
-        fontSize: 30
+    },
+    text: {
+        fontSize: 40,
+        color: '#d2d2d2'
+    },
+    button: {
+        borderRadius: 20
     }
 });

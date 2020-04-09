@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Modal } from 'react-native'; 
 
-export default function InputContainer({ newItem, visible }) {
+export default function InputContainer({ newItem, visible, cancelItemInput }) {
     const [item, setItem] = useState('');
     const itemHandler = inputValue => {
         setItem(inputValue);
@@ -23,14 +23,21 @@ export default function InputContainer({ newItem, visible }) {
                     onChangeText={itemHandler}
                     value={item}
                 />
-                <Button 
-                    title="CANCEL"
-                    color="red"
-                />
-                <Button 
-                    title='ADD' 
-                    onPress={buttonTouch}
-                />
+                <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                        <Button 
+                            title="CANCEL"
+                            color="red"
+                            onPress={cancelItemInput}
+                        />
+                    </View>
+                    <View style={styles.button}>
+                        <Button 
+                            title='ADD' 
+                            onPress={buttonTouch}
+                        />
+                    </View>
+                </View>
             </View>
         </Modal>
     );
@@ -47,6 +54,16 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 1,
         padding: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        borderRadius: 30,
+        textAlign: 'center'
+    },
+    buttonContainer: {
+        width: '55%',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    button: {
+        width: '40%'
     }
 });
