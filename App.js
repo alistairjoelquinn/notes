@@ -12,6 +12,7 @@ export default function App() {
             { id: Math.random().toString(), value: item }, 
             ...toDoList 
         ]);
+        setModalVisible(false);
     };
     const removeItem = itemId => {
         setToDoList(toDoList => {

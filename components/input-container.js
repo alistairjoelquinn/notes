@@ -30,14 +30,15 @@ export default function InputContainer({ newItem, visible }) {
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center'
     },
     inputText: {
         width: '80%',
         borderColor: 'black',
         borderWidth: 1,
-        padding: 10
+        padding: 10,
+        marginBottom: 10
     }
 });
