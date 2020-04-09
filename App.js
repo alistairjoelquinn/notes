@@ -78,6 +78,6 @@ const styles = StyleSheet.create({
         color: '#d2d2d2'
     },
     button: {
-        borderRadius: 20
+        marginBottom: 10
     }
 });

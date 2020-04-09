@@ -18,7 +18,8 @@ export default function InputContainer({ newItem, visible, cancelItemInput }) {
         >
             <View style={styles.inputContainer}>
                 <TextInput 
-                    placeholder='Add to list...'
+                    placeholder='Take some notes...'
+                    placeholderTextColor='#1c1c1c'
                     style={styles.inputText}
                     onChangeText={itemHandler}
                     value={item}
@@ -33,6 +34,7 @@ export default function InputContainer({ newItem, visible, cancelItemInput }) {
                     </View>
                     <View style={styles.button}>
                         <Button 
+                            color='#c192ff'
                             title='ADD' 
                             onPress={buttonTouch}
                         />
@@ -47,7 +49,8 @@ const styles = StyleSheet.create({
     inputContainer: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#1c1c1c'
     },
     inputText: {
         width: '80%',
@@ -56,7 +59,9 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
         borderRadius: 30,
-        textAlign: 'center'
+        backgroundColor: '#d2d2d2',
+        color: '#1c1c1c',
+        
     },
     buttonContainer: {
         width: '55%',
@@ -64,6 +69,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     button: {
-        width: '40%'
+        width: '40%',
     }
 });
